@@ -20,7 +20,7 @@ entry $                  ; $ evaluates to current memory offset
 
     syscall              ; calls sys_exit with return 0
 
-; data ------------------------------------------------------------------------
+; data -------------------------------------------------------------------------
 segment readable
     msg db 'Hello Unix!', 0xA ; 0xA = "\n"
     msg_size = $-msg          ; calculate length of msg 
