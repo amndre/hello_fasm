@@ -12,8 +12,8 @@ entry $                  ; $ evaluates to current memory offset
     mov eax, 4           ; sys_write
 
     int 0x80             ; interrupt that makes the system call stored in the eax register
-                         ; in this case it will call sys_write which writes the value stored in the eax register
-                         ; to the buffer stored in the edi register (sys_call
+                         ; in this case it will call sys_write which writes the value stored in the ecx register
+                         ; to the buffer stored in the ebx register (STDOUT)
 
     mov edi, 0           ; exit code 0
     mov eax, 60          ; sys_exit
