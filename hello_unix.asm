@@ -6,12 +6,13 @@ segment readable executable
 
 entry $                  ; $ evaluates to current memory offset 
     mov edx, msg_size    
-    lea rsi, [msg]       ; transfers memory offset of the msg variable to rsi
-    mov edi, 1           ; STDOUT
-    mov eax, 1           ; sys_write
+    mov ecx, msg         ; transfers memory offset of the msg variable to ecx
 
-    syscall              ; interrupt that makes the system call stored in the eax register
-                         ; in this case it will call sys_writes which writes the value stored in the eax register
+    mov ebx, 1           ; STDOUT
+    mov eax, 4           ; sys_write
+
+    int 0x80             ; interrupt that makes the system call stored in the eax register
+                         ; in this case it will call sys_write which writes the value stored in the eax register
                          ; to the buffer stored in the edi register (sys_call
 
     mov edi, 0           ; exit code 0
